@@ -36,6 +36,16 @@ At the root of the project, you need to run the following command to create the 
 ```bash
 dotnet ef database update --project .\Infrastructure\ --startup-project .\BlogTest.Api\
 ```
+ToDo: 
+We could get this command to be run in the docker file, installing the EntityFramework, using entrypoint to run a shell script
+```
+RUN dotnet tool install --global dotnet-ef
+ENV PATH="$PATH:/root/.dotnet/tools"
+
+COPY entrypoint.sh .
+RUN chmod +x /app/entrypoint.sh
+ENTRYPOINT ["/app/entrypoint.sh"]
+```
 
 ### Test the api
 You can test all methods through swagger
