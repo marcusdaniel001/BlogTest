@@ -25,7 +25,8 @@ namespace BlogTest.Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError($"Error when fetching all blog posts {ex.Message}");
-                throw;
+
+                return BadRequest($"Error when fetching all blog posts {ex.Message}");
             }
         }
 
@@ -51,7 +52,8 @@ namespace BlogTest.Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError($"Error when fetching post by Id {ex.Message}");
-                throw;
+
+                return BadRequest($"Error when fetching post by Id {ex.Message}");
             }
 
         }
@@ -76,7 +78,8 @@ namespace BlogTest.Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError($"Error when creating a new post {ex.Message}");
-                throw;
+
+                return BadRequest($"Error when creating a new post {ex.Message}");
             }
 
         }
@@ -109,7 +112,8 @@ namespace BlogTest.Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError($"Error when creating a new comment {ex.Message}");
-                throw;
+
+                return BadRequest($"Error when creating a new comment {ex.Message}");
             }
 
         }
