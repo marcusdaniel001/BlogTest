@@ -32,10 +32,37 @@ Build the API image.
 Start both containers.
 The API will be available at http://localhost:5000/Swagger and the PostgreSQL database will be accessible on port 5432.
 
+### Running migrations
+At the root of the project, you need to run the following command to create the database and its structure
+```bash
+dotnet ef database update --project .\Infrastructure\ --startup-project .\BlogTest.Api\
+```
+
 ### Test the api
 You can test all methods through swagger
+http://localhost:5000/Swagger
 
-### Running Tests
+- List all posts: GET /api/posts
+- Create a new post: POST /api/posts
+```
+Request body (JSON):
+{
+  "title": "Post XPTO",
+  "content": "This is the content"
+}
+```
+
+- Get a specific post by ID: GET /api/posts/{id}
+- Add a comment to a post: POST /api/posts/{id}/comments
+```
+Request body (JSON):
+{
+  "text": "This is a comment."
+}
+```
+You don't need to send any of the IDs, only when linking a comment to a post
+
+### Running automated tests
 ```bash
 dotnet test
 ```
